@@ -1,13 +1,12 @@
 {
   "builds": [
-    { "src": "index.php", "use": "vercel-php@0.6.2" },
-    { "src": "**/*.css", "use": "@vercel/static" },
-    { "src": "**/*.js", "use": "@vercel/static" },
-    { "src": "**/*.png", "use": "@vercel/static" },
-    { "src": "**/*.html", "use": "@vercel/static" }
+    { "src": "index.php", "use": "vercel-php@0.6.2" }
   ],
   "routes": [
-    { "handle": "filesystem" },
+    {
+      "src": "/(style\\.css|script\\.js|.*\\.png|.*\\.jpg|.*\\.svg)",
+      "dest": "/$1"
+    },
     { "src": "/(.*)", "dest": "/index.php" }
   ]
 }
